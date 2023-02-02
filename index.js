@@ -38,15 +38,31 @@ localStorage.setItem('prdInCart', JSON.stringify(products))
 localStorage.setItem('prdInCart', JSON.stringify(products))
 window.location.reload()
 }
-function cartNumberDisplay(){
-    let cartNumbers = 0;
+function dispCartItem(){
+    let html = '';
     let cartItem = JSON.parse(localStorage.getItem('prdInCart'))
-    cartItem.forEach(item => {
-        cartNumbers = item.quantity += cartNumbers;
-    });
-    console.log(cartNumbers);
-    document.querySelector('.nav span').textContent = cartNumbers;
+    if (!cartItem || cartItem.length === 0) {
+        html = 'Your cart is empty';
+    } else {
+        cartItem.forEach(item => {
+            html += `
+            <div class="cartlist">
+            <div class="forImage"> <img src="${item.image}" alt=""></div>
+            <div class="forName"><h3>${item.name}</h3></div>
+            <div class="forPrice"><h3>${item.price}</h3></div>
+            <div class="forQuantity"><h3>${item.quantity}</h3></div>
+            <div class="forTotal"><h3>${item.totalPrice}</h3></div>
+                    
+             <div class="reoveItem"><button><i class="fa fa-trash" aria-hidden="true"></i>
+    </button></div>
+            
+       </div>
+            `
+        });
+    }
+    document.querySelector('.cartdisp').innerHTML = html;
 }
+
 cartNumberDisplay()
 
 
