@@ -11,7 +11,7 @@ for(var i = 0; i < btn.length; i++){
             image: event.target.parentElement.parentElement.children[0].children[0].src,
             name: event.target.parentElement.parentElement.children[1].children[0].textContent,
             price: event.target.parentElement.parentElement.children[2].children[0].textContent,
-            totalPrice: parseInt(event.target.parentElement.parentElement.children[2].children[0].textContent) ,
+            totalPrice: parseFloat(event.target.parentElement.parentElement.children[2].children[0].textContent) ,
             quantity: 1
         }
     
